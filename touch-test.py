@@ -8,7 +8,7 @@ from time import sleep
 def touchscreen_press(x, y):
     print(x,y)
 
-cs = DigitalOutputDevice(17)
+cs = DigitalOutputDevice(17,active_high=False,initial_value=None)
 clk = board.SCLK_1		# same as writing 21
 mosi = board.MOSI_1	# same as writing 20
 miso = board.MISO_1	# same as writing 19
