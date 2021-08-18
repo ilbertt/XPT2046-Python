@@ -35,7 +35,7 @@ class Touch(object):
         """
         self.spi = spi
         self.cs = cs
-        self.cs.direction = digitalio.Direction.OUTPUT
+        #self.cs.direction = digitalio.Direction.OUTPUT #No longer needed with gpiozero 1.6.2
         self.cs.value = False
         #self.cs.init(self.cs.OUT, value=1)
         self.rx_buf = bytearray(3)  # Receive buffer
@@ -54,12 +54,12 @@ class Touch(object):
 
         if int_pin is not None:
             self.int_pin = int_pin
-            self.int_pin.direction = digitalio.Direction.INPUT
+            #self.int_pin.direction = digitalio.Direction.INPUT #No longer needed with gpiozero 1.6.2
             #self.int_pin.init(int_pin.IN)
             self.int_handler = int_handler
             self.int_locked = False
             self.int_pin.when_pressed = self.int_press
-            self.int_pin.when_relesed = self.int_release
+            self.int_pin.when_released = self.int_release
             '''int_pin.irq(trigger=int_pin.IRQ_FALLING | int_pin.IRQ_RISING,
                         handler=self.int_press) # idea: button.when_pressed = int_press and button.when_released = int_release'''
 
